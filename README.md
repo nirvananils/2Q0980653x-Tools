@@ -2,7 +2,7 @@
 
 ## NOT FOR COMMERCIAL USE - IF YOU BOUGHT THIS YOU GOT RIPPED OFF!
 
-[![IMAGE 60 Seconds Lane Assistant](https://img.youtube.com/vi/5uNE9WR0xK4/0.jpg)](https://youtube.com/shorts/5uNE9WR0xK4).
+[![IMAGE 60 Seconds Lane Assistant](https://img.youtube.com/vi/uVkSvMMs0VE/0.jpg)](https://youtube.com/shorts/uVkSvMMs0VE).
 
 All of your own risk, stay healthy and always drive according to the leagal road traffic regulations!!!
 
