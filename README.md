@@ -10,4 +10,8 @@ Individual vehicle parameters when your car does not have it from the factory, n
 
 There are some very stupid idiots who just copy everything and change the intervention for making money! But this means that a vital function, the Emergency Assistant, will be pushed further into the future or rescue in an emergency is lost! Do not support such sloppy and dangerous manipulations! Fuck all the copy/paste moneymakers who stole the work and don't pay for it!
 
+Now, it's done! Note: I assume no responsibility for any costs, bricks, accidents, or any other liability! Everyone must be aware of what they are doing and is responsiblnowe for the consequences of their actions!
+
+I'll be adding a few more explanations and descriptions in the next few days, but I think most of it will be clear with a basic understanding of the overall topic...
+
 ## All bastards who stolen and selling this should be fucked🖕
