@@ -1,4 +1,5 @@
-## 😎 Now, it's done! Note: I assume no responsibility for any costs, bricks, accidents, or any other liability! Everyone must be aware of what they are doing and is responsiblnowe for the consequences of their actions!
+## Now, it's done! 😎 
+## Note: I assume no responsibility for any costs, bricks, accidents, or any other liability! Everyone must be aware of what they are doing and is responsiblnowe for the consequences of their actions!
 
 I'll be adding a few more explanations and descriptions in the next few days, but I think most of it will be clear with a basic understanding of the overall topic...
 
