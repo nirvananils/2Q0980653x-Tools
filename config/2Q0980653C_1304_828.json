@@ -1,0 +1,255 @@
+{
+  "device": {
+    "Control Unit": "A5",
+    "Hardware": "2Q0980653",
+    "Software": "C",
+    "Version": "1421",
+    "XOR Start": "0310",
+    "XOR End": "1A49",
+    "XOR Key": "B6B9A869"
+  },
+  "parameters": {
+    "0x000002": {
+      "visible": true,
+      "label": "Dataset Number",
+      "editable": false,
+      "type": "ascii",
+      "length": "3"
+    },
+    "0x000006": {
+      "visible": true,
+      "label": "Dataset Version",
+      "editable": false,
+      "type": "ascii",
+      "length": "4"
+    },
+    "0x000010": {
+      "visible": true,
+      "label": "Vehicle length",
+      "editable": true,
+      "type": "float",
+      "display_format": "%d",
+      "unit": "cm",
+      "calc": "*1000"
+    },
+    "0x000014": {
+      "visible": true,
+      "label": "Vehicle width",
+      "editable": true,
+      "type": "float",
+      "display_format": "%d",
+      "unit": "cm",
+      "help": "Specification without mirror",
+      "calc": "*1000"
+    },
+    "0x000018": {
+      "visible": true,
+      "label": "Front track width",
+      "editable": true,
+      "type": "float",
+      "display_format": "%d",
+      "unit": "cm",
+      "calc": "*1000"
+    },
+    "0x00001C": {
+      "visible": true,
+      "label": "Rear track width",
+      "editable": true,
+      "type": "float",
+      "display_format": "%d",
+      "unit": "cm",
+      "calc": "*1000"
+    },
+    "0x000020": {
+      "visible": false,
+      "label": "unknown_1",
+      "editable": true,
+      "type": "float",
+      "display_format": "%d",
+      "unit": "?"
+    },
+    "0x000024": {
+      "visible": false,
+      "label": "unknown_2",
+      "editable": true,
+      "type": "float",
+      "display_format": "%d",
+      "unit": "?"
+    },
+    "0x000028": {
+      "visible": true,
+      "label": "Wheelbase",
+      "editable": true,
+      "type": "float",
+      "display_format": "%d",
+      "unit": "cm",
+      "calc": "*1000"
+    },
+    "0x00002C": {
+      "visible": true,
+      "label": "Wheel center front",
+      "editable": true,
+      "type": "float",
+      "display_format": "%d",
+      "unit": "cm",
+      "help": "Wheel center to edge of front apron",
+      "calc": "*-100"
+    },
+    "0x000034": {
+      "visible": true,
+      "label": "Rear wheel center",
+      "editable": true,
+      "type": "float",
+      "display_format": "%d",
+      "unit": "cm",
+      "help": "Wheel center to edge of rear apron",
+      "calc": "*100"
+    },
+    "0x000038": {
+      "visible": false,
+      "label": "unknown_3",
+      "editable": true,
+      "type": "float",
+      "display_format": "%d",
+      "unit": "cm",
+      "help": "Ground clearance ???"
+    },
+    "0x00003C": {
+      "visible": false,
+      "label": "unknown_4",
+      "editable": true,
+      "type": "float",
+      "display_format": "%d",
+      "unit": "cm",
+      "help": "Position ACC ???"
+    },
+    "0x00004C": {
+      "visible": true,
+      "label": "Camera height",
+      "editable": true,
+      "type": "float",
+      "display_format": "%d",
+      "unit": "cm",
+      "help": "measured from the top edge of the floor to the top of the triangle",
+      "calc": "*1000"
+    },
+    "0x0005B4": {
+      "visible": true,
+      "label": "Time Lane Assistant",
+      "editable": true,
+      "type": "float",
+      "unit": "Sek.",
+      "help": "max. 10 minutes possible!",
+      "calc": "/100",
+      "dependencies": ["<=6000"]
+    },
+    "0x000CD8": {
+      "visible": true,
+      "label": "Lane departure",
+      "editable": true,
+      "type": "float",
+      "unit": "km/h",
+      "help": "when Adaptive Lane Guidance is off",
+      "dependencies": [">=5"]
+    },
+    "0x000E44": {
+      "visible": true,
+      "label": "LA with ACC",
+      "editable": true,
+      "type": "float",
+      "unit": "km/h",
+      "help": "Stop minus 5 km/h",
+      "dependencies": [">=5"]
+    },
+    "0x000E68": {
+      "visible": true,
+      "label": "LA without ACC",
+      "editable": true,
+      "type": "float",
+      "unit": "km/h",
+      "help": "Stop minus 5 km/h",
+      "dependencies": [">=5"]
+    },
+    "0x000F28": {
+      "visible": true,
+      "label": "FLA Start",
+      "editable": true,
+      "type": "float",
+      "unit": "km/h",
+      "help": "The FLA switches on",
+      "dependencies": [">=5"]
+    },
+    "0x000F40": {
+      "visible": true,
+      "label": "FLA Stop",
+      "editable": true,
+      "type": "float",
+      "unit": "km/h",
+      "help": "The FLA switches off",
+      "dependencies": [
+        {
+          "parameterAddress": "0x000F28",
+          "condition": {
+            "operator": ">=",
+            "value": "-5"
+          },
+          "errorMessage": "Value must not be more than 5 less than the start value!"
+        }
+      ]
+    },
+    "0x000D61": {
+      "visible": true,
+      "label": "KRL message",
+      "editable": true,
+      "type": "ubyte",
+      "display_format": "hex",
+      "unit": "hex",
+      "help": "FF = on / BF = off"
+    },
+    "0x00FFE5": {
+      "visible": true,
+      "label": "Brand",
+      "editable": true,
+      "type": "ascii",
+      "length": "12"
+    }
+  },
+  "configurations": {
+    "0x00FFFC": {
+      "visible": true,
+      "label": "CRC Start",
+      "type": "ushort",
+      "display_format": "hex",
+      "unit": "hex",
+      "byte_order": "big",
+      "editable": false
+    },
+    "0x00FFFE": {
+      "visible": true,
+      "label": "CRC Stop",
+      "type": "ushort",
+      "display_format": "hex",
+      "unit": "hex",
+      "byte_order": "big",
+      "editable": false
+    },
+    "0x00FFF8": {
+      "visible": true,
+      "label": "CRC Checksum",
+      "type": "uint",
+      "display_format": "hex",
+      "unit": "hex",
+      "byte_order": "big",
+      "editable": false
+    },
+    "0x00030C": {
+      "visible": true,
+      "label": "XOR data",
+      "type": "uint",
+      "display_format": "hex",
+      "byte_order": "big",
+      "unit": "hex",
+      "editable": false
+    }
+  }
+}
