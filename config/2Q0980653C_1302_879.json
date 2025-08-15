@@ -138,7 +138,7 @@
       "label": "Time Lane Assistant",
       "editable": true,
       "type": "float",
-      "unit": "Sek.",
+      "unit": "Sec.",
       "help": "max. 10 minutes possible!",
       "calc": "/100",
       "dependencies": ["<=6000"]
@@ -151,6 +151,15 @@
       "unit": "km/h",
       "help": "when Adaptive Lane Guidance is off",
       "dependencies": [">=5"]
+    },
+    "0x000D61": {
+      "visible": true,
+      "label": "KLR message",
+      "editable": true,
+      "type": "ubyte",
+      "display_format": "hex",
+      "unit": "hex",
+      "help": "FF = on / BF = off"
     },
     "0x000E44": {
       "visible": true,
@@ -196,15 +205,6 @@
           "errorMessage": "Value must not be more than 5 less than the start value!"
         }
       ]
-    },
-    "0x000D61": {
-      "visible": true,
-      "label": "KRL message",
-      "editable": true,
-      "type": "ubyte",
-      "display_format": "hex",
-      "unit": "hex",
-      "help": "FF = on / BF = off"
     },
     "0x00FFE5": {
       "visible": true,
