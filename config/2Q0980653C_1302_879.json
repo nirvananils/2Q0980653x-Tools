@@ -29,7 +29,7 @@
       "editable": true,
       "type": "float",
       "display_format": "%d",
-      "unit": "cm",
+      "unit": "mm",
       "calc": "*1000"
     },
     "0x000014": {
@@ -38,7 +38,7 @@
       "editable": true,
       "type": "float",
       "display_format": "%d",
-      "unit": "cm",
+      "unit": "mm",
       "help": "Specification without mirror",
       "calc": "*1000"
     },
@@ -48,7 +48,7 @@
       "editable": true,
       "type": "float",
       "display_format": "%d",
-      "unit": "cm",
+      "unit": "mm",
       "calc": "*1000"
     },
     "0x00001C": {
@@ -57,7 +57,7 @@
       "editable": true,
       "type": "float",
       "display_format": "%d",
-      "unit": "cm",
+      "unit": "mm",
       "calc": "*1000"
     },
     "0x000020": {
@@ -82,7 +82,7 @@
       "editable": true,
       "type": "float",
       "display_format": "%d",
-      "unit": "cm",
+      "unit": "mm",
       "calc": "*1000"
     },
     "0x00002C": {
@@ -111,7 +111,7 @@
       "editable": true,
       "type": "float",
       "display_format": "%d",
-      "unit": "cm",
+      "unit": "mm",
       "help": "Ground clearance ???"
     },
     "0x00003C": {
@@ -120,7 +120,7 @@
       "editable": true,
       "type": "float",
       "display_format": "%d",
-      "unit": "cm",
+      "unit": "mm",
       "help": "Position ACC ???"
     },
     "0x00004C": {
@@ -129,7 +129,7 @@
       "editable": true,
       "type": "float",
       "display_format": "%d",
-      "unit": "cm",
+      "unit": "mm",
       "help": "measured from the top edge of the floor to the top of the triangle",
       "calc": "*1000"
     },

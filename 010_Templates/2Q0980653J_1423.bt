@@ -97,17 +97,17 @@ FSeek(00006h);
 char Dataset_Version[4] <format=hex, bgcolor=cYellow>;
 
 FSeek(00010h);
-float Vehicle_length__cm[1] <format=hex, bgcolor=cGreen, comment="(*1000)">;
+float Vehicle_length__mm[1] <format=hex, bgcolor=cGreen, comment="(*1000)">;
 
 
 FSeek(00014h);
-float Vehicle_width__cm[1] <format=hex, bgcolor=cGreen, comment="(*1000) Specification without mirror">;
+float Vehicle_width__mm[1] <format=hex, bgcolor=cGreen, comment="(*1000) Specification without mirror">;
 
 FSeek(00018h);
-float Front_track_width__cm[1] <format=hex, bgcolor=cGreen, comment="(*1000)">;
+float Front_track_width__mm[1] <format=hex, bgcolor=cGreen, comment="(*1000)">;
 
 FSeek(0001Ch);
-float Rear_track_width__cm[1] <format=hex, bgcolor=cGreen, comment="(*1000)">;
+float Rear_track_width__mm[1] <format=hex, bgcolor=cGreen, comment="(*1000)">;
 
 FSeek(00020h);
 float unknown_1[1] <format=hex, bgcolor=cRed>;
@@ -116,7 +116,7 @@ FSeek(00024h);
 float unknown_2[1] <format=hex, bgcolor=cRed>;
 
 FSeek(00028h);
-float Wheelbase__cm[1] <format=hex, bgcolor=cGreen, comment="(*1000)">;
+float Wheelbase__mm[1] <format=hex, bgcolor=cGreen, comment="(*1000)">;
 
 FSeek(0002Ch);
 float Wheel_center_front__mm[1] <format=hex, bgcolor=cGreen, comment="(*-1000) Wheel center to edge of front apron">;
@@ -131,7 +131,7 @@ FSeek(0003Ch);
 float unknown_4[1] <format=hex, bgcolor=cRed, comment="Position ACC ???">;
 
 FSeek(0004Ch); 
-float Camera_height__cm[1] <format=hex, bgcolor=cGreen, comment="(*1000) measured from the top edge of the floor to the top of the triangle">;
+float Camera_height__mm[1] <format=hex, bgcolor=cGreen, comment="(*1000) measured from the top edge of the floor to the top of the triangle">;
 
 FSeek(00030Ch);
 ubyte XOR_data[4] <format=hex, bgcolor=cBlue, comment="XOR Checksum">;
