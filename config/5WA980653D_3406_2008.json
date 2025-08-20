@@ -60,22 +60,6 @@
       "unit": "cm",
       "calc": "*1000"
     },
-    "0x000020": {
-      "visible": true,
-      "label": "unknown_1",
-      "editable": true,
-      "type": "float",
-      "display_format": "%d",
-      "unit": "?"
-    },
-    "0x000024": {
-      "visible": true,
-      "label": "unknown_2",
-      "editable": true,
-      "type": "float",
-      "display_format": "%d",
-      "unit": "?"
-    },
     "0x000028": {
       "visible": true,
       "label": "Wheelbase",
@@ -104,24 +88,6 @@
       "unit": "cm",
       "help": "Wheel center to edge of rear apron",
       "calc": "*100"
-    },
-    "0x000038": {
-      "visible": true,
-      "label": "unknown_3",
-      "editable": true,
-      "type": "float",
-      "display_format": "%d",
-      "unit": "cm",
-      "help": "Ground clearance ???"
-    },
-    "0x00003C": {
-      "visible": true,
-      "label": "unknown_4",
-      "editable": true,
-      "type": "float",
-      "display_format": "%d",
-      "unit": "cm",
-      "help": "Position ACC ???"
     },
     "0x00004C": {
       "visible": true,
