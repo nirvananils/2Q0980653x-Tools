@@ -91,7 +91,7 @@
       "editable": true,
       "type": "float",
       "display_format": "%d",
-      "unit": "mmm",
+      "unit": "mm",
       "help": "Wheel center to edge of front apron",
       "calc": "*-1000"
     },
