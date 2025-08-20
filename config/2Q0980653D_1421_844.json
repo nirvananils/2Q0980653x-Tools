@@ -91,9 +91,9 @@
       "editable": true,
       "type": "float",
       "display_format": "%d",
-      "unit": "cm",
+      "unit": "mmm",
       "help": "Wheel center to edge of front apron",
-      "calc": "*-100"
+      "calc": "*-1000"
     },
     "0x000034": {
       "visible": true,
@@ -101,9 +101,9 @@
       "editable": true,
       "type": "float",
       "display_format": "%d",
-      "unit": "cm",
+      "unit": "mm",
       "help": "Wheel center to edge of rear apron",
-      "calc": "*100"
+      "calc": "*1000"
     },
     "0x000038": {
       "visible": false,

@@ -119,10 +119,10 @@ FSeek(00028h);
 float Wheelbase__cm[1] <format=hex, bgcolor=cGreen, comment="(*1000)">;
 
 FSeek(0002Ch);
-float Wheel_center_front__cm[1] <format=hex, bgcolor=cGreen, comment="(*-100) Wheel center to edge of front apron">;
+float Wheel_center_front__mm[1] <format=hex, bgcolor=cGreen, comment="(*-1000) Wheel center to edge of front apron">;
 
 FSeek(00034h);
-float Rear_wheel_center__cm[1] <format=hex, bgcolor=cGreen, comment="(*100) Wheel center to edge of rear apron">;
+float Rear_wheel_center__mm[1] <format=hex, bgcolor=cGreen, comment="(*1000) Wheel center to edge of rear apron">;
 
 FSeek(00038h);
 float unknown_3[1] <format=hex, bgcolor=cRed, comment="Ground clearance ???">;
