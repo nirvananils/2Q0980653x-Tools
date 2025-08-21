@@ -1,0 +1,200 @@
+//------------------------------------------------
+//--- 010 Editor v16.0 Binary Template
+//
+//		File: 2Q0980653C_1304.bt
+//		Authors: MIBonk
+//		Template-Version: 0.9
+//
+//		Control Unit: A5
+//		Hardware: 2Q0980653
+//		Software: C
+//		Version: 1304
+local int XOR_byte_1 = 0xB6;
+local int XOR_byte_2 = 0xB9;
+local int XOR_byte_3 = 0xA8;
+local int XOR_byte_4 = 0x69;
+local int XOR_start_byte = 0x0310;
+local int XOR_stop_byte = 0x1A49;
+local int XOR_length = XOR_stop_byte - XOR_start_byte + 1;
+//------------------------------------------------
+
+local int XOR_add_byte;
+local int64 siz = FileSize(), crc_bytes;
+local uint32 CRC32_Data, CRC32_All, crc_start = 0, crc_end = 0;
+local uint8 read_byte1, read_byte2, read_byte3, read_byte4, XOR1, XOR2, XOR3, XOR4, KEY1, KEY2, KEY3, KEY4;
+local uchar read;
+
+uint32 XORcalc(uint16 start, uint16 end, uint8 key) {
+    local uint32 xor = 0;
+    FSeek(start);
+    while (start <= end) {
+        xor ^= ReadByte(start);
+        start += 4;
+    }
+    xor ^= key;
+    return xor;
+}
+
+Printf("XOR area 0x%X - 0x%X = %d Bytes\n", XOR_start_byte, XOR_stop_byte, XOR_length);
+
+read_byte1 = ReadByte(XOR_start_byte - 4);
+read_byte2 = ReadByte(XOR_start_byte - 3);
+read_byte3 = ReadByte(XOR_start_byte - 2);
+read_byte4 = ReadByte(XOR_start_byte - 1);
+Printf("XOR Checksum Dataset %02X%02X%02X%02X\n", read_byte1, read_byte2, read_byte3, read_byte4);
+
+FSeek(XOR_start_byte);
+XOR_add_byte = XOR_start_byte;
+XOR1 = XORcalc (XOR_add_byte, XOR_stop_byte, XOR_byte_1);
+XOR_add_byte = XOR_add_byte + 1;
+XOR2 = XORcalc (XOR_add_byte, XOR_stop_byte, XOR_byte_2);
+XOR_add_byte = XOR_add_byte + 1;
+XOR3 = XORcalc (XOR_add_byte, XOR_stop_byte, XOR_byte_3);
+XOR_add_byte = XOR_add_byte + 1;
+XOR4 = XORcalc (XOR_add_byte, XOR_stop_byte, XOR_byte_4);
+Printf("XOR Checksum calc    %02X%02X%02X%02X\n", XOR1, XOR2, XOR3, XOR4);
+Printf("XOR KeyTemplate %02X%02X%02X%02X\n", XOR_byte_1, XOR_byte_2, XOR_byte_3, XOR_byte_4);
+
+FSeek(XOR_start_byte);
+XOR_add_byte = XOR_start_byte;
+KEY1 = XORcalc (XOR_add_byte, XOR_stop_byte, read_byte1);
+XOR_add_byte = XOR_add_byte + 1;
+KEY2 = XORcalc (XOR_add_byte, XOR_stop_byte, read_byte2);
+XOR_add_byte = XOR_add_byte + 1;
+KEY3 = XORcalc (XOR_add_byte, XOR_stop_byte, read_byte3);
+XOR_add_byte = XOR_add_byte + 1;
+KEY4 = XORcalc (XOR_add_byte, XOR_stop_byte, read_byte4);
+Printf("XOR Key calc    %02X%02X%02X%02X\n", KEY1, KEY2, KEY3, KEY4);
+
+crc_bytes = (siz -8);
+read = ReadByte(siz -4);
+crc_start += read;
+crc_start <<= 8;
+read = ReadByte(siz -3);
+crc_start += read;
+read = ReadByte(siz -2);
+crc_end += read;
+crc_end <<= 8;
+read = ReadByte(siz -1);
+crc_end += read;
+Printf("CRC32 area 0x%.04X - 0x", crc_start);
+Printf("%.04X\n", crc_end);
+CRC32_Data = Checksum(CHECKSUM_CRC32, 0, crc_end);
+Printf("CRC32 Checksum Dataarea %.08X\n", CRC32_Data);
+FSeek(crc_bytes);
+CRC32_All = Checksum(CHECKSUM_CRC32, 0, siz);
+Printf("CRC32 Checksum Dataset  %.08X\n", CRC32_All);
+
+// Dataanalyse
+// todo: dependencies into JSON Export
+
+LittleEndian();
+
+FSeek(00002h);
+char Dataset_Number[3] <format=hex, bgcolor=cYellow>;
+
+FSeek(00006h);
+char Dataset_Version[4] <format=hex, bgcolor=cYellow>;
+
+FSeek(00010h);
+float Vehicle_length__mm[1] <format=hex, bgcolor=cGreen, comment="(*1000)">;
+
+
+FSeek(00014h);
+float Vehicle_width__mm[1] <format=hex, bgcolor=cGreen, comment="(*1000) Specification without mirror">;
+
+FSeek(00018h);
+float Front_track_width__mm[1] <format=hex, bgcolor=cGreen, comment="(*1000)">;
+
+FSeek(0001Ch);
+float Rear_track_width__mm[1] <format=hex, bgcolor=cGreen, comment="(*1000)">;
+
+FSeek(00020h);
+float unknown_1[1] <format=hex, bgcolor=cRed>;
+
+FSeek(00024h);
+float unknown_2[1] <format=hex, bgcolor=cRed>;
+
+FSeek(00028h);
+float Wheelbase__mm[1] <format=hex, bgcolor=cGreen, comment="(*1000)">;
+
+FSeek(0002Ch);
+float Wheel_center_front__mm[1] <format=hex, bgcolor=cGreen, comment="(*-1000) Wheel center to edge of front apron">;
+
+FSeek(00034h);
+float Rear_wheel_center__mm[1] <format=hex, bgcolor=cGreen, comment="(*1000) Wheel center to edge of rear apron">;
+
+FSeek(00038h);
+float unknown_3[1] <format=hex, bgcolor=cRed, comment="Ground clearance ???">;
+
+FSeek(0003Ch);
+float unknown_4[1] <format=hex, bgcolor=cRed, comment="Position ACC ???">;
+
+FSeek(0004Ch); 
+float Camera_height__mm[1] <format=hex, bgcolor=cGreen, comment="(*1000) measured from the top edge of the floor to the top of the triangle">;
+
+FSeek(00030Ch);
+ubyte XOR_data[4] <format=hex, bgcolor=cBlue, comment="XOR Checksum">;
+
+FSeek(000310h);
+struct {
+	ubyte Area_XOR_Checksum[XOR_length] <format=hex, bgcolor=cGray, comment="XOR area">;
+	}Area_XOR_Checksum;
+
+FSeek(0005B4h);
+float Time_Lane_Assistant__Sec[1] <format=hex, bgcolor=cGreen, comment="(/100) max. 10 minutes possible!">;
+// "dependencies": ["<=6000"]
+
+FSeek(000CD8h);
+float Lane_departure__kmh[1] <format=hex, bgcolor=cGreen, comment="when Adaptive Lane Guidance is off">;
+// "dependencies": [">=5"]
+
+FSeek(000D61h);
+ubyte KLR_message[1] <format=hex, bgcolor=cGreen, comment="FF = on / BF = off">;
+
+FSeek(000E44h);
+float LA_with_ACC__kmh[1]<format=hex, bgcolor=cGreen, comment="Stop minus 5 km/h">;
+// "dependencies": [">=5"]
+
+FSeek(000E68h);
+float LA_without_ACC__kmh[1]<format=hex, bgcolor=cGreen, comment="Stop minus 5 km/h">;
+// "dependencies": [">=5"]
+
+FSeek(000F28h);
+float FLA_Start__kmh[1] <format=hex, bgcolor=cGreen, comment=" The FLA switches on">;
+// "dependencies": [">=5"]
+FSeek(000F2Ch);
+float unknown_5[1] <format=hex, bgcolor=cRed, comment="possible Start other FLA profile">;
+
+FSeek(000F40h);
+float FLA_Stop__kmh[1] <format=hex, bgcolor=cGreen, comment="The FLA switches off">;
+// "dependencies": [
+//        {
+//          "parameterAddress": "0x000F28",
+//          "condition": {
+//            "operator": ">=",
+//            "value": "-5"
+//          },
+//          "errorMessage": "Value must not be more than 5 less than the start value!"
+//        }
+//      ]
+
+FSeek(000F44h);
+float unknown_6[1] <format=hex, bgcolor=cRed, comment="possible Stop other FLA profile">;
+
+FSeek(000F90h);
+struct {
+	ubyte Area_PL_SL[304] <format=hex, bgcolor=cGray, comment="Steering PL/SL area">;
+	}Area_PL_SL;
+
+FSeek(00FFE5h);
+char Brand[12] <format=hex, bgcolor=cGreen>;
+
+FSeek(00FFF8h); // CRC32 BigEndian
+ubyte CRC_Checksum[4] <format=hex, bgcolor=cBlue, comment="CRC32 Checksum BigEndian">;
+
+FSeek(00FFFCh); // Adress for CRC32 Start area
+ubyte CRC_Start[2] <format=hex, bgcolor=cBlue, comment="CRC32 Start">;
+
+FSeek(00FFFEh); // Adress for CRC32 End area
+ubyte CRC_Stop[2] <format=hex, bgcolor=cBlue, comment="CRC32 Stop">;
