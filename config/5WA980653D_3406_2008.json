@@ -129,7 +129,7 @@
     },
     "0x000E44": {
       "visible": true,
-      "label": "LA with ACC",
+      "label": "LA without ACC",
       "editable": true,
       "type": "float",
       "unit": "km/h",
@@ -138,7 +138,7 @@
     },
     "0x000E68": {
       "visible": true,
-      "label": "LA without ACC",
+      "label": "LA with ACC",
       "editable": true,
       "type": "float",
       "unit": "km/h",
